@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "mood-map",
   description: "Travel by mood not by plans",
+  icons:{
+    icon:"/location.png"
+  }
 };
 
 export default function RootLayout({ children }) {
