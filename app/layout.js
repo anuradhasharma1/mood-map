@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,9 @@ export default function RootLayout({ children }) {
           src="https://cdn.lordicon.com/lordicon.js"
           strategy="beforeInteractive"
         />
-        {children}</body>
+        <Navbar/>
+        {children}
+      </body>
     </html>
   );
 }

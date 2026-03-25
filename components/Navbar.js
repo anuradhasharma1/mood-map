@@ -15,7 +15,7 @@ const Navbar = () => {
     }, [isDark])
 
     return (
-        <nav className=' w-full bg-[#00ffff] h-18 flex items-center justify-between   '>
+        <nav className=' w-full bg-[#00ffff] h-18 flex items-center justify-between border-b border-[#00ccff]   '>
             <div className='mx-10   cursor-pointer flex '>
                 <h1 className=' flex py-1  font-bold text-3xl text-white'>Mood<span className='text-[rgb(255,204,92)]'>Map</span></h1>
                 <Image
