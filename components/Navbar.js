@@ -1,10 +1,13 @@
 "use client"
 import Image from "next/image"
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react"
 
 
 const Navbar = () => {
     const [isDark, setIsDark] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+    const router = useRouter();
 
     useEffect(() => {
         if (isDark) {
@@ -12,7 +15,19 @@ const Navbar = () => {
         } else {
             document.documentElement.classList.remove("dark")
         }
-    }, [isDark])
+    }, [isDark]);
+
+    const handleSearch = () => {
+        if (inputValue) router.push(`/?q=${inputValue}`);
+        else {
+            router.push("/");
+            router.refresh();
+        }
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") handleSearch();
+    };
 
     return (
         <nav className=' w-full bg-[#00ffff] h-18 flex items-center justify-between border-b border-[#00ccff]   '>
@@ -25,8 +40,8 @@ const Navbar = () => {
                     height={50}
                 />
             </div>
+            {/*Search Bar*/}
             <div className=" mx-10 flex gap-4 items-center ">
-
                 <div className=" flex items-center bg-[#ffcc5c] px-2 py-1 border border-white rounded-md cursor-pointer">
                     <lord-icon
                         src="https://cdn.lordicon.com/swqyihda.json"
@@ -39,9 +54,13 @@ const Navbar = () => {
                     <input
                         type="text"
                         placeholder="Search moods or places..."
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        onKeyDown={handleKeyPress}
                         className="outline-none px-2"
                     />
                 </div>
+
                 { /*animated icon*/}
                 <button
                     onClick={() => setIsDark(!isDark)}
