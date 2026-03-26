@@ -1,27 +1,9 @@
 "use client"
 import { useState } from "react"
 import Image from "next/image"
+import { moods } from "@/data/moods";
+import { famousPlaces } from "@/data/places";
 
-
-const moods = [
-  { label: "Calm", emoji: "🌿", bg: "#e8faf4", pillBg: "#1D9E75", tagBg: "#c8f5e6", tagBorder: "#9FE1CB", tagText: "#0F6E56", heading: "#1D9E75" },
-  { label: "Happy", emoji: "☀️", bg: "#fffbea", pillBg: "#EF9F27", tagBg: "#fff3cc", tagBorder: "#FAC775", tagText: "#7a4f00", heading: "#e69000" },
-  { label: "Adventure", emoji: "🧭", bg: "#fff4f0", pillBg: "#D85A30", tagBg: "#fde8df", tagBorder: "#f0997b", tagText: "#7a2800", heading: "#D85A30" },
-  { label: "Romantic", emoji: "🌸", bg: "#fff0f5", pillBg: "#D4537E", tagBg: "#fce4ee", tagBorder: "#ED93B1", tagText: "#7a1a3e", heading: "#D4537E" },
-  { label: "Work Aesthetic", emoji: "📚", bg: "#eef5ff", pillBg: "#378ADD", tagBg: "#dceeff", tagBorder: "#85B7EB", tagText: "#0C447C", heading: "#378ADD" },
-  { label: "Social", emoji: "🎉", bg: "#f3f0ff", pillBg: "#7F77DD", tagBg: "#e8e4ff", tagBorder: "#AFA9EC", tagText: "#3C3489", heading: "#7F77DD" },
-]
-
-const famousPlaces = [
-  { id: 1, name: "Taj Mahal", city: "Agra", state: "Uttar Pradesh", type: "Monument", image: "/tajmahal.jpg", color: "#D4537E", colorBg: "#FBEAF0", desc: "One of the Seven Wonders of the World" },
-  { id: 2, name: "Amber Fort", city: "Jaipur", state: "Rajasthan", type: "Fort", image: "/amber fort.jpg", color: "#D85A30", colorBg: "#FAECE7", desc: "Majestic hilltop fort with stunning architecture" },
-  { id: 3, name: "Kerala Backwaters", city: "Alleppey", state: "Kerala", type: "Nature", image: "/kerela-backwaters.jpg", color: "#1D9E75", colorBg: "#E1F5EE", desc: "Serene network of lagoons and lakes" },
-  { id: 4, name: "Varanasi Ghats", city: "Varanasi", state: "Uttar Pradesh", type: "Culture", image: "/varanasi.jpg", color: "#EF9F27", colorBg: "#FAEEDA", desc: "Ancient spiritual city on the Ganges" },
-  { id: 5, name: "Nalanda University Ruins", city: "Nalanda", state: "Bihar", type: "History", image: "/nalanda.jpg", color: "#D97706", colorBg: "#FEF3C7", desc: "Ancient center of learning and one of the world's first universities" },
-  { id: 6, name: "Rann of Kutch", city: "Kutch", state: "Gujarat", type: "Nature", image: "/kutch.jpg", color: "#378ADD", colorBg: "#E6F1FB", desc: "World's largest salt flat under moonlight" },
-  { id: 7, name: "Hampi Ruins", city: "Hampi", state: "Karnataka", type: "Heritage", image: "/hampi.jpg", color: "#D85A30", colorBg: "#FAECE7", desc: "Surreal boulder landscape with ancient temples" },
-  { id: 8, name: "Ladakh Valley", city: "Leh", state: "Ladakh", type: "Adventure", image: "/leh.jpg", color: "#1D9E75", colorBg: "#E1F5EE", desc: "High-altitude desert with breathtaking passes" },
-]
 
 export default function Home() {
   const [selected, setSelected] = useState(null)
