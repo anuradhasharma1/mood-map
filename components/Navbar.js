@@ -55,7 +55,7 @@ const Navbar = () => {
                         <span className="absolute w-0.5 h-0.5 bg-white rounded-full top-1 left-8 animate-pulse" style={{ animationDelay: "0.6s" }} />
                     </span>
 
-                    {/* Sliding thumb: sun ↔ moon */}
+                    {/*slider theme toggler*/}
                     <span
                         className={`absolute top-0.5 w-5 h-5 rounded-full shadow-md flex items-center justify-center text-xs transition-all duration-500 ease-in-out ${isDark ? "translate-x-7 bg-gray-200" : "translate-x-0.5 bg-yellow-300"}`}
                     >

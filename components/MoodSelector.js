@@ -1,10 +1,8 @@
-"use client"
-import { useState } from "react";
+"use client";
 import { moods } from "@/data/moods";
 
-export default function MoodSelector() {
-    const [selected, setSelected] = useState(null);
 
+export default function MoodSelector({ selected, setSelected }) {
     const activeMood = moods.find((m) => m.label === selected);
 
     return (
@@ -19,7 +17,8 @@ export default function MoodSelector() {
                             background: selected === mood.label ? mood.pillBg : "white",
                             color: selected === mood.label ? "white" : "#555",
                             borderColor: selected === mood.label ? mood.pillBg : "#e5e7eb",
-                            boxShadow: selected === mood.label ? `0 4px 16px ${mood.pillBg}55` : "none",
+                            boxShadow:
+                                selected === mood.label ? `0 4px 16px ${mood.pillBg}55` : "none",
                             transform: selected === mood.label ? "translateY(-2px)" : "",
                         }}
                     >
@@ -28,10 +27,19 @@ export default function MoodSelector() {
                     </button>
                 ))}
             </div>
-            {/*button*/}
+
+            {/* Explore button */}
             <div className="flex justify-center pb-12">
                 <button
                     disabled={!selected}
+
+                    onClick={() => {
+                        if (selected) {
+                            document
+                                .getElementById("places-section")
+                                ?.scrollIntoView({ behavior: "smooth" });
+                        }
+                    }}
                     className="text-white px-8 py-3 rounded-xl font-medium text-base transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                     style={{
                         background: activeMood ? activeMood.pillBg : "#FFD54F",
@@ -42,5 +50,5 @@ export default function MoodSelector() {
                 </button>
             </div>
         </>
-    )
+    );
 }
