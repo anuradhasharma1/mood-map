@@ -9,13 +9,13 @@ const handler = NextAuth({
   adapter: MongoDBAdapter(clientPromise),
 
   providers: [
-    // ✅ Google Login
+    //  Google Login
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
 
-     // ✅ Email & Password
+     //  Email & Password
     CredentialsProvider({
       name: "credentials",
       credentials: {
