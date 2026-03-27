@@ -2,12 +2,14 @@
 import Image from "next/image"
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react"
+import { useSession, signOut } from "next-auth/react";
 
 
 const Navbar = () => {
+    const [isDark, setIsDark] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const router = useRouter();
-    const [isDark, setIsDark] = useState(false);
+    const { data: session } = useSession();
 
     useEffect(() => {
         const saved = localStorage.getItem("theme");
@@ -109,7 +111,28 @@ const Navbar = () => {
                     </span>
                 </button>
 
-                <button className="  bg-[#df1231] px-3 py-1 border border-white rounded-md cursor-pointer font-bold  text-[#ffff] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:bg-[#ff1f4b]">Login</button>
+                {/*show user avatar and login and logout*/}
+
+                {session ? (
+                    <div className="flex items-center gap-2">
+                        <span className="text-white text-sm font-medium">
+                          Welcome {session.user.name?.split(" ")[0]} !
+                        </span>
+                        <button
+                            onClick={() => signOut({ callbackUrl: "/" })}
+                            className="bg-[#df1231] px-3 py-1 border border-white rounded-md cursor-pointer font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff1f4b]"
+                        >
+                            Logout
+                        </button>
+                    </div>
+                ) : (
+                    <button
+                        onClick={() => router.push("/login")}
+                        className="bg-[#df1231] px-3 py-1 border border-white rounded-md cursor-pointer font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff1f4b]"
+                    >
+                        Login
+                    </button>
+                )}
             </div>
         </nav>
     )

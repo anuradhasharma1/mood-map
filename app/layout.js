@@ -1,7 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import AuthProvider from "@/components/AuthProvider";
 import Navbar from "@/components/Navbar";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,13 +29,34 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+    <head>
+        {/*  Prevent dark mode flicker */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
+
       <body className="min-h-full flex flex-col">
+        {/* lordicon script */}
         <Script
           src="https://cdn.lordicon.com/lordicon.js"
           strategy="beforeInteractive"
         />
-        <Navbar/>
-        {children}
+
+        {/* Auth wrapper */}
+        <AuthProvider>
+          <Navbar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
