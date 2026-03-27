@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { famousPlaces } from "@/data/places";
@@ -31,7 +30,7 @@ function HomeContent() {
 
 
   return (
-    <main>
+    <main style={{ background: "var(--page-bg)" }} className="min-h-screen transition-colors duration-300">
       <HeroSection selected={selected} />
       <MoodSelector selected={selected} setSelected={setSelected} />
       <PlacesGrid places={filtered} searchQuery={searchQuery} />

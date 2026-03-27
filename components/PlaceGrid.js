@@ -14,7 +14,8 @@ export default function PlacesGrid({ places, searchQuery }) {
       <div className="max-w-6xl mx-auto px-8 mb-8">
         <div className="flex items-center gap-4">
           <div className="flex-1 h-px bg-gray-100" />
-          <h3 className="text-2xl font-semibold whitespace-nowrap">
+          <h3 style={{ color: "var(--text-primary)" }}
+           className="text-2xl font-semibold whitespace-nowrap">
             Famous Places in India
           </h3>
           <div className="flex-1 h-px bg-gray-100" />

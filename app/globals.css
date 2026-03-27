@@ -1,2 +1,23 @@
 @import "tailwindcss";
 
+@layer base {
+  :root {
+    --nav-bg: #00ffff;
+    --nav-border: #00ccff;
+    --page-bg: #ffffff;
+    --text-primary: #111111;
+    --text-secondary: #999999;
+    --card-bg: #ffffff;
+    --card-border: #f0f0f0;
+  }
+
+  .dark {
+    --nav-bg: #0f172a;
+    --nav-border: #1e293b;
+    --page-bg: #0f172a;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+  }
+}

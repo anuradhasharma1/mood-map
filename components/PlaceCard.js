@@ -4,12 +4,8 @@ import Image from "next/image";
 
 export default function PlaceCard({ place }) {
   return (
-    <div
+    <div style={{ background: "var(--card-bg)", borderColor: "var(--card-border)" }}
       className="rounded-2xl border overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-      style={{
-        background: "white",
-        borderColor: "#f0f0f0",
-      }}
     >
       {/* Image */}
       <div className="h-28 overflow-hidden relative">

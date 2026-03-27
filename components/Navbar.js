@@ -5,17 +5,32 @@ import { useState, useEffect } from "react"
 
 
 const Navbar = () => {
-    const [isDark, setIsDark] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const router = useRouter();
+    const [isDark, setIsDark] = useState(false);
 
     useEffect(() => {
-        if (isDark) {
-            document.documentElement.classList.add("dark")
-        } else {
-            document.documentElement.classList.remove("dark")
+        const saved = localStorage.getItem("theme");
+        if (saved === "dark") {
+            document.documentElement.classList.add("dark");
+            document.documentElement.setAttribute("data-theme", "dark");
         }
-    }, [isDark]);
+
+    },
+        []);
+
+    //toggle
+    const handleToggle = () => {
+        const newDark = !isDark;
+        setIsDark(newDark);
+        if (newDark) {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+            document.documentElement.classList.remove("dark");
+        }
+    };
 
     const handleSearch = () => {
         if (inputValue) router.push(`/?q=${inputValue}`);
@@ -30,7 +45,8 @@ const Navbar = () => {
     };
 
     return (
-        <nav className=' w-full bg-[#00ffff] h-18 flex items-center justify-between border-b border-[#00ccff]   '>
+        <nav style={{ background: "var(--nav-bg)", borderColor: "var(--nav-border)" }}
+            className=' w-full h-18 flex items-center justify-between border-b transition-all duration-300'>
             <div className='mx-10   cursor-pointer flex '>
                 <h1 className=' flex py-1  font-bold text-3xl text-white'>Mood<span className='text-[rgb(255,204,92)]'>Map</span></h1>
                 <Image
@@ -63,7 +79,7 @@ const Navbar = () => {
 
                 { /*animated icon*/}
                 <button
-                    onClick={() => setIsDark(!isDark)}
+                    onClick={handleToggle}
                     aria-label="Toggle theme"
                     className={`relative w-14 h-7 rounded-full border-2 border-white transition-all duration-500 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-1 ${isDark ? "bg-[#0f0f23]" : "bg-sky-300"}`}
                 >
