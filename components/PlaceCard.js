@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PlaceCard({ place }) {
   return (
+    <Link href={`places/${place.id}`}>
     <div style={{ background: "var(--card-bg)", borderColor: "var(--card-border)" }}
       className="rounded-2xl border overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
     >
@@ -47,5 +49,6 @@ export default function PlaceCard({ place }) {
         </span>
       </div>
     </div>
+    </Link>
   );
 }
