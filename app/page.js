@@ -33,7 +33,7 @@ function HomeContent() {
     <main style={{ background: "var(--page-bg)" }} className="min-h-screen transition-colors duration-300">
       <HeroSection selected={selected} />
       <MoodSelector selected={selected} setSelected={setSelected} />
-      <PlacesGrid places={filtered} searchQuery={searchQuery} />
+      <PlacesGrid places={filtered} searchQuery={searchQuery}  selected={selected} />
     </main>
   );
 }

@@ -20,7 +20,7 @@ export default function LoginPage() {
     setLoading(true);
 
     if (isLogin) {
-      // ✅ Login with email/password
+      // Login with email/password
       const res = await signIn("credentials", {
         email: form.email,
         password: form.password,
@@ -33,7 +33,7 @@ export default function LoginPage() {
         router.push("/"); // redirect to home on success
       }
     } else {
-      // ✅ Register new account
+      //  Register new account
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -112,7 +112,7 @@ export default function LoginPage() {
         <button
           onClick={handleSubmit}
           disabled={loading}
-          className="w-full bg-[#00ccff] text-white py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-[#00aadd] hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+          className="w-full bg-[rgb(255,204,92)] text-white py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-[rgba(202,154,51,0.93)] hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           {loading ? "Please wait..." : isLogin ? "Login" : "Create Account"}
         </button>
@@ -143,7 +143,7 @@ export default function LoginPage() {
           {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
           <button
             onClick={() => { setIsLogin(!isLogin); setError(""); }}
-            className="text-[#00ccff] font-medium hover:underline cursor-pointer"
+            className="text-black font-medium hover:underline cursor-pointer"
           >
             {isLogin ? "Sign up" : "Log in"}
           </button>
