@@ -3,8 +3,8 @@
 import PlaceCard from "./PlaceCard";
 
 
-export default function PlacesGrid({ places, searchQuery }) {
-
+export default function PlacesGrid({ places, searchQuery, selected }) {
+  const displayPlaces = (selected || searchQuery) ? places : places.slice(0, 8);
   const subtext = searchQuery
     ? `${places.length} result${places.length !== 1 ? "s" : ""} for "${searchQuery}"`
     : "Iconic destinations every traveller must experience";
@@ -15,7 +15,7 @@ export default function PlacesGrid({ places, searchQuery }) {
         <div className="flex items-center gap-4">
           <div className="flex-1 h-px bg-gray-100" />
           <h3 style={{ color: "var(--text-primary)" }}
-           className="text-2xl font-semibold whitespace-nowrap">
+            className="text-2xl font-semibold whitespace-nowrap">
             Famous Places in India
           </h3>
           <div className="flex-1 h-px bg-gray-100" />
@@ -26,7 +26,7 @@ export default function PlacesGrid({ places, searchQuery }) {
       <div className="max-w-6xl mx-auto px-8 pb-16">
         {places.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {places.map((place) => (
+            {displayPlaces.map((place) => (
               <PlaceCard key={place.id} place={place} />
             ))}
           </div>
