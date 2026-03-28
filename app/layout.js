@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "mood-map",
   description: "Travel by mood not by plans",
-  icons:{
-    icon:"/location.png"
+  icons: {
+    icon: "/location.png"
   }
 };
 
@@ -29,8 +29,8 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-    <head>
-        {/*  Prevent dark mode flicker */}
+      <head>
+        {/*  restore without flicker */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -38,8 +38,10 @@ export default function RootLayout({ children }) {
                 const theme = localStorage.getItem('theme');
                 if (theme === 'dark') {
                   document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
                 }
-              } catch (e) {}
+              } catch(e) {}
             `,
           }}
         />

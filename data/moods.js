@@ -11,7 +11,7 @@ export const moods = [
   },
   {
     label: "Happy",
-    emoji: "☀️",
+    emoji: "🌞",
     pillBg: "#EF9F27",
     tagBg: "#fff3cc",
     tagBorder: "#EF9F27",
@@ -31,7 +31,7 @@ export const moods = [
   },
   {
     label: "Romantic",
-    emoji: "🌸",
+    emoji: "💗",
     pillBg: "#D4537E",
     tagBg: "#fce4ee",
     tagBorder: "#D4537E",
@@ -41,7 +41,7 @@ export const moods = [
   },
   {
     label: "Work Aesthetic",
-    emoji: "📚",
+    emoji: "💻",
     pillBg: "#378ADD",
     tagBg: "#dceeff",
     tagBorder: "#378ADD",
@@ -51,7 +51,7 @@ export const moods = [
   },
   {
     label: "Social",
-    emoji: "🎉",
+    emoji: "👥",
     pillBg: "#7F77DD",
     tagBg: "#e8e4ff",
     tagBorder: "#7F77DD",

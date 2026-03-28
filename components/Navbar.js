@@ -4,22 +4,22 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react"
 import { useSession, signOut } from "next-auth/react";
 
+function getInitialTheme() {
+    if (typeof window === "undefined") return false;
+    return localStorage.getItem("theme") === "dark";
+}
 
+ 
 const Navbar = () => {
-    const [isDark, setIsDark] = useState(false);
+
     const [inputValue, setInputValue] = useState("");
     const router = useRouter();
     const { data: session } = useSession();
+    const [isDark, setIsDark] = useState(false);
+   
+    
 
-    useEffect(() => {
-        const saved = localStorage.getItem("theme");
-        if (saved === "dark") {
-            document.documentElement.classList.add("dark");
-            document.documentElement.setAttribute("data-theme", "dark");
-        }
-
-    },
-        []);
+   
 
     //toggle
     const handleToggle = () => {
@@ -116,7 +116,7 @@ const Navbar = () => {
                 {session ? (
                     <div className="flex items-center gap-2">
                         <span className="text-white text-sm font-medium">
-                          Welcome {session.user.name?.split(" ")[0]} !
+                            Welcome {session.user.name?.split(" ")[0]} !
                         </span>
                         <button
                             onClick={() => signOut({ callbackUrl: "/" })}
