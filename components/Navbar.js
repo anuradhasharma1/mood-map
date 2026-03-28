@@ -3,6 +3,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react"
 import { useSession, signOut } from "next-auth/react";
+import Link from "next/link";
 
 function getInitialTheme() {
     if (typeof window === "undefined") return false;
@@ -53,16 +54,18 @@ const Navbar = () => {
         <>
             <nav style={{ background: "var(--nav-bg)", borderColor: "var(--nav-border)" }}
                 className=' w-full h-18 flex items-center justify-between border-b transition-all duration-300 px-4 md:px-10'>
-                <div className='  cursor-pointer flex items-center '>
-                    <h1 className=' flex py-1  font-bold text-3xl text-white'>Mood<span className='text-[rgb(255,204,92)]'>Map</span></h1>
-                    <Image
-                        src="/logo.png"
-                        alt="map-logo"
-                        width={50}
-                        height={50}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                </div>
+                <Link href="/">
+                    <div className='  cursor-pointer flex items-center '>
+                        <h1 className=' flex py-1  font-bold text-3xl text-white'>Mood<span className='text-[rgb(255,204,92)]'>Map</span></h1>
+                        <Image
+                            src="/logo.png"
+                            alt="map-logo"
+                            width={50}
+                            height={50}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                    </div>
+                </Link>
                 {/*Search Bar*/}
                 <div className=" hidden md:flex gap-4 items-center ">
                     <div className=" flex items-center bg-[#ffcc5c] px-2 py-1 border border-white rounded-md cursor-pointer">
