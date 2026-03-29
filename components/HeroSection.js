@@ -7,7 +7,7 @@ export default function HeroSection({ selected }) {
     return (
         <>
             {/* Tag */}
-            <div className="flex items-center justify-center pt-16 pb-6 px-4">
+            <div className="flex items-center justify-center pt-16 md:pt-16 pb-4 md:pb-6 px-4">
                 <p
                     className="px-4 py-2 border rounded-full text-base text-center transition-colors duration-500"
                     style={{

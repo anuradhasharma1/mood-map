@@ -3,6 +3,7 @@ import "./globals.css";
 import Script from "next/script";
 import AuthProvider from "@/components/AuthProvider";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "react-hot-toast";
 
 
 const geistSans = Geist({
@@ -57,6 +58,37 @@ export default function RootLayout({ children }) {
 
         {/* Auth wrapper */}
         <AuthProvider>
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                borderRadius: "12px",
+                fontWeight: "500",
+                fontSize: "14px",
+              },
+              success: {
+                style: {
+                  background: "#00ccff",
+                  color: "#fff",
+                },
+                iconTheme: {
+                  primary: "#fff",
+                  secondary: "#00ccff",
+                },
+              },
+              error: {
+                style: {
+                  background: "#df1231",
+                  color: "#fff",
+                },
+                iconTheme: {
+                  primary: "#fff",
+                  secondary: "#df1231",
+                },
+              },
+            }}
+          />
           <Navbar />
           {children}
         </AuthProvider>

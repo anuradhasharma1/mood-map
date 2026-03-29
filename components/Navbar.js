@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react"
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 function getInitialTheme() {
     if (typeof window === "undefined") return false;
@@ -19,9 +20,6 @@ const Navbar = () => {
     const [isDark, setIsDark] = useState(false);
 
 
-
-
-
     //toggle
     const handleToggle = () => {
         const newDark = !isDark;
@@ -31,7 +29,7 @@ const Navbar = () => {
             localStorage.setItem("theme", "dark");
         } else {
             document.documentElement.classList.remove("dark");
-            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
         }
     };
 
@@ -49,6 +47,12 @@ const Navbar = () => {
     const handleKeyPress = (e) => {
         if (e.key === "Enter") handleSearch();
     };
+
+    const handleLogout = async () => {
+    toast.success("Logged out successfully!");
+    await new Promise((resolve) => setTimeout(resolve, 1500)); 
+    signOut({ callbackUrl: "/" });
+};
 
     return (
         <>
@@ -126,7 +130,7 @@ const Navbar = () => {
                                 Welcome {session.user.name?.split(" ")[0]} !
                             </span>
                             <button
-                                onClick={() => signOut({ callbackUrl: "/" })}
+                                onClick={handleLogout}
                                 className="bg-[#df1231] px-3 py-1 border border-white rounded-md cursor-pointer font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff1f4b]"
                             >
                                 Logout
@@ -135,6 +139,7 @@ const Navbar = () => {
                     ) : (
                         <button
                             onClick={() => router.push("/login")}
+
                             className="bg-[#df1231] px-3 py-1 border border-white rounded-md cursor-pointer font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff1f4b]"
                         >
                             Login
@@ -177,7 +182,7 @@ const Navbar = () => {
                     {/* Login / logout mobile */}
                     {session ? (
                         <button
-                            onClick={() => signOut({ callbackUrl: "/" })}
+                            onClick={handleLogout}
                             className="bg-[#df1231] px-2 py-1 border border-white rounded-md cursor-pointer font-bold text-white text-xs transition-all duration-300 hover:bg-[#ff1f4b]"
                         >
                             Logout
