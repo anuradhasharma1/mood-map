@@ -9,7 +9,6 @@ export default function LoginPage() {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(true); // toggle login/register
   const [form, setForm] = useState({ name: "", email: "", password: "" });
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -17,7 +16,6 @@ export default function LoginPage() {
   };
 
   const handleSubmit = async () => {
-    setError("");
     setLoading(true);
 
     if (isLogin) {
@@ -72,12 +70,6 @@ export default function LoginPage() {
           {isLogin ? "Welcome back!" : "Create your account"}
         </p>
 
-        {/* Error */}
-        {error && (
-          <p className="text-red-500 text-sm text-center mb-4 bg-red-50 py-2 px-3 rounded-lg">
-            {error}
-          </p>
-        )}
 
         {/* Name field (register only) */}
         {!isLogin && (
@@ -145,7 +137,7 @@ export default function LoginPage() {
         <p className="text-center text-gray-400 text-sm mt-6">
           {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
           <button
-            onClick={() => { setIsLogin(!isLogin); setError(""); }}
+            onClick={() => { setIsLogin(!isLogin); }}
 
             className="text-black font-medium hover:underline cursor-pointer"
           >

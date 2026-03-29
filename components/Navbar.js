@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import toast from "react-hot-toast";
@@ -17,7 +17,7 @@ const Navbar = () => {
     const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
     const router = useRouter();
     const { data: session } = useSession();
-    const [isDark, setIsDark] = useState(false);
+    const [isDark, setIsDark] = useState(getInitialTheme);
 
 
     //toggle
