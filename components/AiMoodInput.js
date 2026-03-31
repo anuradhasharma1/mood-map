@@ -68,7 +68,7 @@ export default function AIMoodInput() {
                 >
                     {/* Header */}
                     <p style={{
-                        color: "var(--nav-bg)",
+                        color: "#00ffff",
                         marginBottom: "8px",
                         fontSize: "13px",
                         fontWeight: "600",
@@ -124,7 +124,7 @@ export default function AIMoodInput() {
                     />
 
 
-                    {/* Button */}
+                    {/*submit Button */}
                     <button
                         onClick={handleSubmit}
                         disabled={loading}
@@ -132,7 +132,7 @@ export default function AIMoodInput() {
                             width: "100%",
                             marginTop: "10px",
                             padding: "10px",
-                            background: loading ? "var(--card-border)" : "var(--nav-bg)",
+                            background: loading ? "var(--card-border)" :  "#00ffff",
                             color: loading ? "var(--text-secondary)" : "#0f172a",
                             border: "none",
                             borderRadius: "8px",
@@ -150,17 +150,15 @@ export default function AIMoodInput() {
                         <div style={{
                             marginTop: "14px",
                             padding: "12px",
-                            background: "var(--page-bg)",
+                            background: "var(--card-border)",  
                             borderRadius: "10px",
                             border: "1px solid var(--card-border)",
                         }}>
                             <h4 style={{
-                                color: "var(--nav-bg)",
+                                color: "var(--text-primary)", 
                                 margin: "0 0 6px",
                                 fontSize: "15px",
-                            }}>
-                                🗺️ {suggestion.destination}
-                            </h4>
+                            }}></h4>
                             <p style={{
                                 color: "var(--text-primary)",
                                 fontSize: "12px",
