@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react";
+import { useState, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { famousPlaces } from "@/data/places";
 import { moods } from "@/data/moods";
@@ -11,8 +11,9 @@ import AIMoodInput from "@/components/AiMoodInput";
 function HomeContent() {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("q")
-
   const [selected, setSelected] = useState(null);
+  const [highlightedPlace, setHighlightedPlace] = useState(null);
+
   const filtered = famousPlaces.filter((place) => {
     const matchesMood = selected
       ? place.vibes?.some((v) =>
@@ -28,14 +29,20 @@ function HomeContent() {
     return matchesMood && matchesSearch;
   });
 
+  function handleAISuggestion(destinationName) {
+    setHighlightedPlace(destinationName);
+    // remove highlight after 3 seconds
+    setTimeout(() => setHighlightedPlace(null), 3000);
+  }
+
 
 
   return (
     <main style={{ background: "var(--page-bg)" }} className="min-h-screen transition-colors duration-300">
       <HeroSection selected={selected} />
       <MoodSelector selected={selected} setSelected={setSelected} />
-      <PlacesGrid places={filtered} searchQuery={searchQuery}  selected={selected} />
-      <AIMoodInput /> 
+      <PlacesGrid places={filtered} searchQuery={searchQuery} selected={selected}  highlightedPlace={highlightedPlace} />
+      <AIMoodInput onSuggest={handleAISuggestion} />
     </main>
   );
 }
