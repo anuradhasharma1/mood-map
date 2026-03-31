@@ -4,24 +4,24 @@ import PlaceCard from "./PlaceCard";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function PlacesGrid({ places, searchQuery, selected }) {
+export default function PlacesGrid({ places, searchQuery, selected, highlightedPlace }) {
   const { data: session } = useSession();
   const router = useRouter();
 
   //only login user can see
   const displayPlaces = selected
     ? session
-      ? places       
-      : []           
-    : places.slice(0, 8); 
+      ? places
+      : []
+    : places.slice(0, 8);
 
   const subtext = searchQuery
     ? `${places.length} result${places.length !== 1 ? "s" : ""} for "${searchQuery}"`
     : selected
-    ? session
-      ? `Showing all ${places.length} places for ${selected} mood`
-      : `Login to explore ${selected} places`
-    : "Iconic destinations every traveller must experience";
+      ? session
+        ? `Showing all ${places.length} places for ${selected} mood`
+        : `Login to explore ${selected} places`
+      : "Iconic destinations every traveller must experience";
 
   return (
     <div id="places-section">
@@ -70,7 +70,9 @@ export default function PlacesGrid({ places, searchQuery, selected }) {
           //  Show place cards
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {displayPlaces.map((place) => (
-              <PlaceCard key={place.id} place={place} />
+              <PlaceCard key={place.id} place={place}
+                isHighlighted={place.name === highlightedPlace}
+              />
             ))}
           </div>
         ) : (
