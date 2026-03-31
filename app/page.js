@@ -6,6 +6,7 @@ import { moods } from "@/data/moods";
 import HeroSection from "@/components/HeroSection";
 import MoodSelector from "@/components/MoodSelector";
 import PlacesGrid from "@/components/PlaceGrid";
+import AIMoodInput from "@/components/AiMoodInput";
 
 function HomeContent() {
   const searchParams = useSearchParams();
@@ -34,6 +35,7 @@ function HomeContent() {
       <HeroSection selected={selected} />
       <MoodSelector selected={selected} setSelected={setSelected} />
       <PlacesGrid places={filtered} searchQuery={searchQuery}  selected={selected} />
+      <AIMoodInput /> 
     </main>
   );
 }

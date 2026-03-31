@@ -1,5 +1,6 @@
 "use server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { famousPlaces } from "@/data/places";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 

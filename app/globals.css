@@ -29,7 +29,7 @@
 
 /* track (background) */
 ::-webkit-scrollbar-track {
-  background: #18a3ab; 
+  background: #18a3ab;
 }
 
 /* thumb (scroll part) */
@@ -41,4 +41,27 @@
 /* hover effect */
 ::-webkit-scrollbar-thumb:hover {
   background: #ffaa00;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
 }
