@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { getMoodSuggestion } from "@/app/actions/getMoodSuggestion";
 
-export default function AIMoodInput() {
+export default function AIMoodInput({onSuggest}) {
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState("");
     const [suggestion, setSuggestion] = useState(null);
@@ -16,6 +16,7 @@ export default function AIMoodInput() {
         try {
             const result = await getMoodSuggestion(input);
             setSuggestion(result);
+            onSuggest?.(result.destination);
         } catch (err) {
             console.error("AI error:", err);
         } finally {
