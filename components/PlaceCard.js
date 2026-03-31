@@ -2,8 +2,22 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
-export default function PlaceCard({ place }) {
+
+export default function PlaceCard({ place, isHighlighted }) {
+  const cardRef = useRef(null);
+  //card get highlight ,when u scroll to it
+  useEffect(() => {
+    if (isHighlighted && cardRef.current) {
+      cardRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [isHighlighted]);
+
+
   return (
     <Link href={`/places/${place.id}`}>
       <div style={{ background: "var(--card-bg)", borderColor: "var(--card-border)" }}
